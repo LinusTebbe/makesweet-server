@@ -1,7 +1,9 @@
 *
-!src/*.cpp
-!src/*.h
-!src/*.c
-!src/*.proto
-!src/CMakeLists.txt
-!CMakeLists.txt
+!server/*
+!makesweet/templates/*
+!makesweet/src/*.cpp
+!makesweet/src/*.h
+!makesweet/src/*.c
+!makesweet/src/*.proto
+!makesweet/src/CMakeLists.txt
+!makesweet/CMakeLists.txt
