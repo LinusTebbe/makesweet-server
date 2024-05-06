@@ -1,0 +1,82 @@
+basePath: /api
+consumes:
+- multipart/form-data
+host: localhost:8080
+info:
+  contact: {}
+  description: A golang server to create gifs from images.
+  title: Makesweet golang server
+  version: "1.0"
+paths:
+  /gif/billboard:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Use image from form to make a approaching billboard gif
+      parameters:
+      - description: A png or jpg image
+        in: formData
+        name: image
+        required: true
+        type: file
+      produces:
+      - json image/gif
+      responses:
+        "200":
+          description: Generated Gif
+          schema:
+            type: file
+      summary: Create a billboard gif
+      tags:
+      - Gif
+  /gif/flag:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Use image from form to make a waving flag gif
+      parameters:
+      - description: A png or jpg image
+        in: formData
+        name: image
+        required: true
+        type: file
+      produces:
+      - json image/gif
+      responses:
+        "200":
+          description: Generated Gif
+          schema:
+            type: file
+      summary: Create a flag gif
+      tags:
+      - Gif
+  /gif/heart-locket:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Use image-lef and image-right files from form to make a opening
+        heart locket gif
+      parameters:
+      - description: A png or jpg image to left half
+        in: formData
+        name: image-left
+        required: true
+        type: file
+      - description: A png or jpg image to right half
+        in: formData
+        name: image-right
+        required: true
+        type: file
+      produces:
+      - json image/gif
+      responses:
+        "200":
+          description: Generated Gif
+          schema:
+            type: file
+      summary: Create a heart locket gif
+      tags:
+      - Gif
+produces:
+- json image/gif
+swagger: "2.0"
