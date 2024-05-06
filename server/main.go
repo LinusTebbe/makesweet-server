@@ -1,14 +1,25 @@
 package main
 
 import (
+	_ "makesweet/docs"
 	"makesweet/handlers"
+	middleware "makesweet/middlewares"
 	"os"
 	"strings"
 
 	"github.com/charmbracelet/log"
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
+// @Title Makesweet golang server
+// @Version 1.0
+// @Description	A golang server to create gifs from images.
+// @Accept mpfd
+// @Produce json image/gif
+// @Host localhost:8080
+// @BasePath /api
 func main() {
 	imageFolderPath := os.Getenv("SAVE_IMAGE_FOLDER")
 	if len(strings.TrimSpace(imageFolderPath)) == 0 {
@@ -25,10 +36,16 @@ func main() {
 
 	r := gin.Default()
 
-	gifGroup := r.Group("/gif")
+	r.Use(middleware.RedirectToDocs)
+
+	apiGroup := r.Group("/api")
+
+	gifGroup := apiGroup.Group("/gif")
 	gifGroup.POST("/billboard", handlers.CreateBillboardGif)
 	gifGroup.POST("/flag", handlers.CreateFlagGif)
 	gifGroup.POST("/heart-locket", handlers.CreateHeartLocketGif)
+
+	apiGroup.GET("/docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	r.Run(":8080")
 }

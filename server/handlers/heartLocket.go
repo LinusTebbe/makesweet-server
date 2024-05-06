@@ -11,6 +11,18 @@ import (
 	"github.com/google/uuid"
 )
 
+// CreateHeartLocket
+// @Summary Create a heart locket gif
+// @Description Use image-lef and image-right files from form to make a opening heart locket gif
+// @Tags Gif
+// @Accept mpfd
+// @Param image-left formData file true "A png or jpg image to left half"
+// @Param image-right formData file true "A png or jpg image to right half"
+// @Produce json image/gif
+// @Success 200 {file} binary "Generated Gif"
+// @Fail 400 {string} "Fail to load images from formData"
+// @Fail 500 {string} "Fail to generate gif"
+// @Router /gif/heart-locket [post]
 func CreateHeartLocketGif(ctx *gin.Context) {
 	leftImageFilePath, err := utils.SaveImageFromContext(ctx, "image-left")
 	if err != nil {
