@@ -1,0 +1,10 @@
+services:
+  makesweet:
+    container_name: makesweet
+    build: ./
+    env_file:
+      - .env
+    ports:
+      - 8080:8080
+    tmpfs:
+      - ${SAVE_IMAGE_FOLDER}

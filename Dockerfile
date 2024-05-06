@@ -11,7 +11,8 @@ RUN \
   apt-get install -y libgd-dev libzzip-dev libopencv-highgui-dev
 
 RUN \
-  cd tmp; \
+  cd /tmp; \
+  echo $PWD\
   apt-get update; \
   apt-get install -y cmake wget; \
   wget https://github.com/robotology/yarp/archive/v2.3.72.tar.gz; \
@@ -33,7 +34,7 @@ RUN \
   apt-get update; \
   apt-get install -y libjsoncpp-dev
 
-COPY . /makesweet/
+COPY ./makesweet/ /makesweet/
 
 RUN \
   cd /makesweet; \
@@ -44,8 +45,27 @@ RUN \
 
 RUN \
   echo "#!/bin/bash" > /reanimator; \
-  echo "cd /share" >> /reanimator; \
   echo "/makesweet/build/bin/reanimator \"\$@\"" >> /reanimator; \
   chmod u+x /reanimator
 
-ENTRYPOINT ["/reanimator"]
+RUN \
+  apt-get update;\
+  apt-get install -y software-properties-common;\
+  add-apt-repository ppa:longsleep/golang-backports
+
+RUN \
+  apt-get update;\
+  apt-get install -y golang-go
+
+ENV GOPATH=$HOME/go
+ENV PATH=${PATH}:${GOPATH}/bin
+
+COPY ./server /makesweetServer
+
+RUN \
+  cd /makesweetServer;\
+  go mod tidy
+
+EXPOSE 8080
+WORKDIR /makesweetServer
+ENTRYPOINT ["go","run","."]
