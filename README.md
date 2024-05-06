@@ -1,0 +1,65 @@
+# Makesweet server in golang
+
+## What is this?
+
+A server implementation of [paulfitz/makesweet](https://github.com/paulfitz/makesweet) meme gif generator using golang builded to be a microservice for a Discord bot
+
+## Tools
+
+This project uses the following tools
+
+<div>
+  <table>
+    <tr>
+      <th style="text-align:center">Golang</th>
+      <th style="text-align:center">Docker</th>
+      <th style="text-align:center">Gin Web Framework</th>
+    </tr>
+    <tr>
+      <td style="text-align: center"><a href="https://go.dev"><img src="https://go.dev/blog/go-brand/Go-Logo/SVG/Go-Logo_Blue.svg" height="90" alt="Golang" /></a></td>
+      <td style="text-align: center"><a href="https://www.docker.com"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/docker-icon.svg" height="90" alt="Docker" /></a></td>
+      <td style="text-align: center"><a href="https://gin-gonic.com"><img src="https://raw.githubusercontent.com/gin-gonic/logo/master/color.png" height="90" alt="Gin" /></a></td>
+    </tr>
+  </table>
+</div>
+
+## How to use?
+
+1. Clone this repo to your desired location.
+2. Go to the `makesweet-server` folder.
+3. Copy the `.env.example` file to a file named `.env` and modify the env value (if you want).
+4. Use the `docker compose up` command to run the compose.
+5. The server will run in https://localhost:8080.
+6. You can make a post request with a form body to the [Endpoints](#endpoints)
+
+## Endpoints
+
+### /gif/flag
+
+#### Type
+
+POST
+
+#### Body
+
+form-data with a field `image` (png or jpg)
+
+### /gif/billboard
+
+#### Type
+
+POST
+
+#### Body
+
+form-data with a field `image` (png or jpg)
+
+### /gif/heart-locket
+
+#### Type
+
+POST
+
+#### Body
+
+form-data with a field `image-left` and `image-right` (both png or jpg)
