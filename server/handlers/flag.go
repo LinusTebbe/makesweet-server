@@ -11,6 +11,17 @@ import (
 	"github.com/google/uuid"
 )
 
+// CreateFlag
+// @Summary Create a flag gif
+// @Description Use image from form to make a waving flag gif
+// @Tags Gif
+// @Accept mpfd
+// @Param image formData file true "A png or jpg image"
+// @Produce json image/gif
+// @Success 200 {file} binary "Generated Gif"
+// @Fail 400 {string} "Fail to load image from formData"
+// @Fail 500 {string} "Fail to generate gif"
+// @Router /gif/flag [post]
 func CreateFlagGif(ctx *gin.Context) {
 	imageFilePath, err := utils.SaveImageFromContext(ctx, "image")
 	if err != nil {

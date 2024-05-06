@@ -1,0 +1,122 @@
+{
+    "consumes": [
+        "multipart/form-data"
+    ],
+    "produces": [
+        "json image/gif"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "A golang server to create gifs from images.",
+        "title": "Makesweet golang server",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api",
+    "paths": {
+        "/gif/billboard": {
+            "post": {
+                "description": "Use image from form to make a approaching billboard gif",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "json image/gif"
+                ],
+                "tags": [
+                    "Gif"
+                ],
+                "summary": "Create a billboard gif",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "A png or jpg image",
+                        "name": "image",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Generated Gif",
+                        "schema": {
+                            "type": "file"
+                        }
+                    }
+                }
+            }
+        },
+        "/gif/flag": {
+            "post": {
+                "description": "Use image from form to make a waving flag gif",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "json image/gif"
+                ],
+                "tags": [
+                    "Gif"
+                ],
+                "summary": "Create a flag gif",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "A png or jpg image",
+                        "name": "image",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Generated Gif",
+                        "schema": {
+                            "type": "file"
+                        }
+                    }
+                }
+            }
+        },
+        "/gif/heart-locket": {
+            "post": {
+                "description": "Use image-lef and image-right files from form to make a opening heart locket gif",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "json image/gif"
+                ],
+                "tags": [
+                    "Gif"
+                ],
+                "summary": "Create a heart locket gif",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "A png or jpg image to left half",
+                        "name": "image-left",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "file",
+                        "description": "A png or jpg image to right half",
+                        "name": "image-right",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Generated Gif",
+                        "schema": {
+                            "type": "file"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
