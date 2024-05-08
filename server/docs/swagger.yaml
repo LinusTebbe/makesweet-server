@@ -29,6 +29,27 @@ paths:
       summary: Create a billboard gif
       tags:
       - Gif
+  /gif/circuit:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Use image from form to make a zooming circuit board gif
+      parameters:
+      - description: A png or jpg image
+        in: formData
+        name: image
+        required: true
+        type: file
+      produces:
+      - json image/gif
+      responses:
+        "200":
+          description: Generated Gif
+          schema:
+            type: file
+      summary: Create a circuit board gif
+      tags:
+      - Gif
   /gif/flag:
     post:
       consumes:
@@ -48,6 +69,27 @@ paths:
           schema:
             type: file
       summary: Create a flag gif
+      tags:
+      - Gif
+  /gif/flying-bear:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Use image from form to make a flying bear gif
+      parameters:
+      - description: A png or jpg image
+        in: formData
+        name: image
+        required: true
+        type: file
+      produces:
+      - json image/gif
+      responses:
+        "200":
+          description: Generated Gif
+          schema:
+            type: file
+      summary: Create a flying bear gif
       tags:
       - Gif
   /gif/heart-locket:
@@ -75,6 +117,37 @@ paths:
           schema:
             type: file
       summary: Create a heart locket gif
+      tags:
+      - Gif
+  /gif/nesting-doll:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Use three images to create a nesting doll gif
+      parameters:
+      - description: A png or jpg image to the left doll
+        in: formData
+        name: image-left
+        required: true
+        type: file
+      - description: A png or jpg image to the mid doll
+        in: formData
+        name: image-mid
+        required: true
+        type: file
+      - description: A png or jpg image to the right doll
+        in: formData
+        name: image-right
+        required: true
+        type: file
+      produces:
+      - json image/gif
+      responses:
+        "200":
+          description: Generated Gif
+          schema:
+            type: file
+      summary: Create a nesting doll gif
       tags:
       - Gif
 produces:
