@@ -53,6 +53,38 @@ const docTemplate = `{
                 }
             }
         },
+        "/gif/circuit": {
+            "post": {
+                "description": "Use image from form to make a zooming circuit board gif",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "json image/gif"
+                ],
+                "tags": [
+                    "Gif"
+                ],
+                "summary": "Create a circuit board gif",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "A png or jpg image",
+                        "name": "image",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Generated Gif",
+                        "schema": {
+                            "type": "file"
+                        }
+                    }
+                }
+            }
+        },
         "/gif/flag": {
             "post": {
                 "description": "Use image from form to make a waving flag gif",
@@ -66,6 +98,38 @@ const docTemplate = `{
                     "Gif"
                 ],
                 "summary": "Create a flag gif",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "A png or jpg image",
+                        "name": "image",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Generated Gif",
+                        "schema": {
+                            "type": "file"
+                        }
+                    }
+                }
+            }
+        },
+        "/gif/flying-bear": {
+            "post": {
+                "description": "Use image from form to make a flying bear gif",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "json image/gif"
+                ],
+                "tags": [
+                    "Gif"
+                ],
+                "summary": "Create a flying bear gif",
                 "parameters": [
                     {
                         "type": "file",
@@ -109,6 +173,52 @@ const docTemplate = `{
                     {
                         "type": "file",
                         "description": "A png or jpg image to right half",
+                        "name": "image-right",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Generated Gif",
+                        "schema": {
+                            "type": "file"
+                        }
+                    }
+                }
+            }
+        },
+        "/gif/nesting-doll": {
+            "post": {
+                "description": "Use three images to create a nesting doll gif",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "json image/gif"
+                ],
+                "tags": [
+                    "Gif"
+                ],
+                "summary": "Create a nesting doll gif",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "A png or jpg image to the left doll",
+                        "name": "image-left",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "file",
+                        "description": "A png or jpg image to the mid doll",
+                        "name": "image-mid",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "file",
+                        "description": "A png or jpg image to the right doll",
                         "name": "image-right",
                         "in": "formData",
                         "required": true
